@@ -4,7 +4,9 @@
   "description": "Robô de lances que vai ajudar na disputa das licitações cadastradas no portal BLL",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "repository": {
     "type": "git",
