@@ -1,0 +1,23 @@
+{
+  "name": "robolancesbll",
+  "version": "1.0.0",
+  "description": "Robô de lances que vai ajudar na disputa das licitações cadastradas no portal BLL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjvilar/RoboLancesBLL.git"
+  },
+  "keywords": [],
+  "author": "Juliano José Vilar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jjvilar/RoboLancesBLL/issues"
+  },
+  "homepage": "https://github.com/jjvilar/RoboLancesBLL#readme",
+  "dependencies": {
+    "cypress": "^14.3.0"
+  }
+}
