@@ -22,7 +22,7 @@ describe('Acessando a página de login do BLL Compras', () => {
         // Clica no botão "Entrar"
         cy.get('[onclick="doLogin()"]').click();
 
-        // Clica no botão "Operado" na tela de aviso
+        // Clica no botão "Operador" na tela de aviso
         cy.get(':nth-child(3) > .tablebutton > .btn').click(); 
 
         // Verifica se o botão de fechar está visível
@@ -30,6 +30,16 @@ describe('Acessando a página de login do BLL Compras', () => {
 
         // Clica no botão de fechar
         cy.get('.close > span').click(); 
+
+        // Verifica se o botão "Dia" está visível e clica
+        cy.get('.fc-dayGridDay-button').should('be.visible').click();
+
+        //
+        cy.get('.fc-event-title').should('be.visible').then(($element) => {
+            const texto = $element.text().trim(); // Remove espaços em branco
+            cy.log('Texto do elemento: ' + texto); // Loga o texto do elemento
+            cy.get('.fc-event-title').click(); // Clica no elemento
+        });
 
 
     });
