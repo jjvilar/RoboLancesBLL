@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 require('cypress-xpath');
 
 describe('Acessando o Portal de Compras Públicas', () => {
@@ -52,8 +53,43 @@ describe('Acessando o Portal de Compras Públicas', () => {
         //Clica no botão de acesso a sessão pública
         cy.get('[href="/4/SessaoPublica/?ttCD_CHAVE=380022"]').click({ force: true });
 
+        //Aguarda a apresentação da cy.get('#tabTableSorter')
+        cy.get('#tabTableSorter').should('be.visible', { timeout: 10000 });
+
+        //Lista a quantidade de itens na tabela
+        cy.get('#tabTableSorter > tbody > tr').then(($rows) => {
+            const rowCount = $rows.length;
+            cy.log('Quantidade de itens na tabela:', rowCount);
+        });
+
+        //Verifica o item cy.get('#item1009') está visível
+        cy.get('#item1009').should('be.visible', { timeout: 10000 });
+
+        //Vrifica se o item cy.get('#lstLances1009 > .stateIMGLink > img') está visível
+        cy.get('#lstLances1009 > .stateIMGLink > img').should('be.visible', { timeout: 10000 });
+
+        //Pega o valor do campo de lance cy.get('#lstLances1009 > #\35 72805')  
+        cy.get('#lstLances1009 > #572805').then(($valor) => {
+            const valor = $valor.text();
+            cy.log('Valor do campo de lance:', valor);
+        });
+
+        //Do valor do campo de lance cy.get('#lstLances1009 > #\35 72805') subtrai 0,01 , multiplica por 100 e digita no campo de lance cy.get('#item1009 > .td150 > #defaultForm5 > .formLeftBlock > .formInputBlock > #word') 
+        cy.get('#lstLances1009 > #572805').then(($valor) => {
+            const valor = parseFloat($valor.text().replace('R$', '').replace('.', '').replace(',', '.'));
+            const novoValor = (valor - 0.01) * 100;
+            cy.log('Novo valor do campo de lance:', novoValor);
+            cy.get('#item1009 > .td150 > #defaultForm5 > .formLeftBlock > .formInputBlock > #word').type(novoValor.toFixed(2), { force: true });
+        });
+
+        //Clica no botão de enviar lance cy.get('#item1009 > .td150 > #defaultForm5 > .formLeftBlock > .confirmIcon')
+        cy.get('#item1009 > .td150 > #defaultForm5 > .formLeftBlock > .confirmIcon').click({ force: true });
+
         
 
+        //Teclar enter para confirmar o envio do lance
+        //cy.get('body').type('{enter}', { force: true });
+        
         
     });
 });
