@@ -14,7 +14,7 @@ describe('Acessando a página de login do BLL Compras', () => {
         cy.get('#Email').type('carolinaucv.licitacoes@gmail.com');
 
         // Chama a função para identificar os botões
-        identificarBotoes('124578');
+        identificarBotoes(4444448');
 
         // Verifica se o botão "Entrar" está visível
         cy.get('[onclick="doLogin()"]').should('be.visible');
