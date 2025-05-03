@@ -12,7 +12,7 @@ describe('Acessando o Portal de Compras Públicas', () => {
         cy.get('#nome').type("carolinaucv.licitacoes@gmail.com", { force: true });
 
         //Digitar a senha no campo de login
-        cy.get('#senha').type("1q2w!Q@W", { force: true });
+        cy.get('#senha').type("", { force: true });
 
         //Clicar no botão Enviar
         cy.get('.btn-submit').click({ force: true });
