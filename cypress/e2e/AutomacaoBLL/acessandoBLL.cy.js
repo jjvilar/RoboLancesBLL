@@ -13,8 +13,12 @@ describe('Acessando a página de login do BLL Compras', () => {
         // Insere o e-mail no campo de login
         cy.get('#Email').type('carolinaucv.licitacoes@gmail.com');
 
-        // Chama a função para identificar os botões
-        identificarBotoes(4444448');
+        // kkkwwww
+        cy.fixture('kkkwwww.json').then((data) => {
+            const kkkwwww = data.kkkwwww; // 
+            cy.log('JSON: ' + kkkwwww);
+            identificarBotoes(kkkwwww); 
+        })
 
         // Verifica se o botão "Entrar" está visível
         cy.get('[onclick="doLogin()"]').should('be.visible');
